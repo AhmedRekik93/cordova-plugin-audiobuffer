@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-dbmeter" version="2.1.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-audiobuffer" version="2.1.0">
 
-  <name>DBMeter</name>
+  <name>AudioBuffer</name>
   <license>Apache 2.0</license>
-  <description>Cordova DBMeter plugin</description>
+  <description>Cordova AudioBuffer plugin</description>
   <keywords>cordova,phonegap,volume,sound,audio,decibel</keywords>
 
   <platform name="android">
@@ -21,7 +21,7 @@
     <source-file src="src/android/PermissionHelper.java" target-dir="src/org/apache/cordova/audiobuffer" />
   </platform>
 
-  <platform name="ios">
+  <!--<platform name="ios">
     <config-file target="config.xml" parent="/*">
       <feature name="DBMeter">
         <param name="ios-package" value="DBMeter" />
@@ -29,9 +29,9 @@
     </config-file>
 
     <source-file src="src/ios/DBMeter.swift" />
-  </platform>
+  </platform>-->
 
-  <js-module src="dbmeter.js" name="DBMeter">
-    <clobbers target="DBMeter" />
+  <js-module src="audiobuffer.js" name="AudioBuffer">
+    <clobbers target="AudioBuffer" />
   </js-module>
 </plugin>
