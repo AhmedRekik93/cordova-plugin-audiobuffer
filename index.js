@@ -128,19 +128,19 @@ var AudioBuffer = (function (_super) {
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Observable)
-    ], DBMeter.prototype, "start", null);
+    ], AudioBuffer.prototype, "start", null);
     __decorate([
         Cordova(),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Promise)
-    ], DBMeter.prototype, "stop", null);
+    ], AudioBuffer.prototype, "stop", null);
     __decorate([
         Cordova(),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Promise)
-    ], DBMeter.prototype, "isListening", null);
+    ], AudioBuffer.prototype, "isListening", null);
     __decorate([
         Cordova(),
         __metadata("design:type", Function),
