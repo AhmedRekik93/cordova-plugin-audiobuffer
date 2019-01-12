@@ -21,7 +21,7 @@
     <source-file src="src/android/PermissionHelper.java" target-dir="src/org/apache/cordova/audiobuffer" />
   </platform>
 
-  <!--<platform name="ios">
+  <!--  <platform name="ios">
     <config-file target="config.xml" parent="/*">
       <feature name="DBMeter">
         <param name="ios-package" value="DBMeter" />

@@ -14,6 +14,7 @@ var AudioBuffer = {
       'AudioBuffer', 'destroy', []
     );
   },
+  // HACK
 
   /**
    * Starts listening the audio signal.
