@@ -32,7 +32,7 @@ import { Observable } from 'rxjs/Observable';
  * );
  * ```
  */
-export declare class DBMeter extends IonicNativePlugin {
+export declare class AudioBuffer extends IonicNativePlugin {
     /**
      * Starts listening
      * @returns {Observable<any>} Returns an observable. Subscribe to start listening. Unsubscribe to stop listening.
