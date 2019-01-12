@@ -2,7 +2,7 @@
   "name": "cordova-plugin-audiobuffer",
   "version": "2.1.0",
   "description": "Cordova AudioBuffer plugin",
-  "main": "dbmeter.js",
+  "main": "audiobuffer.js",
   "homepage": "https://gitlab.hpi.de/ahmed.rekik/cordova-plugin-audiobuffer.git",
   "author": {
     "name": "Alexis Kofman"
