@@ -2,12 +2,12 @@
   "name": "cordova-plugin-audiobuffer",
   "version": "2.1.0",
   "description": "Cordova AudioBuffer plugin",
-  "main": "audiobuffer.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
   "homepage": "https://gitlab.hpi.de/ahmed.rekik/cordova-plugin-audiobuffer.git",
   "author": {
-    "name": "Alexis Kofman"
+    "name": "Alexis Kofman & Ahmed Rekik"
   },
-  "license": "Apache-2.0",
   "cordova": {
     "id": "cordova-plugin-audiobuffer",
     "platforms": [
@@ -32,5 +32,10 @@
     "cordova-ios",
     "cordova-android",
     "cordova:plugin"
-  ]
+  ],
+  "dependencies": {
+    "@angular/core": "^7.2.0",
+    "@ionic-native/core": "^4.11.0",
+    "rxjs": "^5.5.11"
+  }
 }
