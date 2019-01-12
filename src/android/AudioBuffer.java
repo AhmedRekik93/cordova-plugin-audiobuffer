@@ -71,7 +71,7 @@ public class AudioBuffer extends CordovaPlugin {
             }
             callbackContext.success();
         } else {
-            sendPluginError(callbackContext, PluginError.DBMETER_NOT_INITIALIZED, "AudioBuffer is not initialized");
+            sendPluginError(callbackContext, PluginError.AudioBuffer_NOT_INITIALIZED, "AudioBuffer is not initialized");
         }
     }
 
@@ -160,7 +160,7 @@ public class AudioBuffer extends CordovaPlugin {
                     callbackContext.success();
 
                 } else {
-                    sendPluginError(callbackContext, PluginError.DBMETER_NOT_LISTENING, "AudioBuffer is not listening");
+                    sendPluginError(callbackContext, PluginError.AudioBuffer_NOT_LISTENING, "AudioBuffer is not listening");
                 }
             }
         });
@@ -195,7 +195,7 @@ public class AudioBuffer extends CordovaPlugin {
     }
 
     public enum PluginError {
-        DBMETER_NOT_INITIALIZED,
-        DBMETER_NOT_LISTENING
+        AudioBuffer_NOT_INITIALIZED,
+        AudioBuffer_NOT_LISTENING
     }
 }

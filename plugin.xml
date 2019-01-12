@@ -21,15 +21,15 @@
     <source-file src="src/android/PermissionHelper.java" target-dir="src/org/apache/cordova/audiobuffer" />
   </platform>
 
-  <!--  <platform name="ios">
+    <platform name="ios">
     <config-file target="config.xml" parent="/*">
-      <feature name="DBMeter">
-        <param name="ios-package" value="DBMeter" />
+      <feature name="AudioBuffer">
+        <param name="ios-package" value="AudioBuffer" />
       </feature>
     </config-file>
 
-    <source-file src="src/ios/DBMeter.swift" />
-  </platform>-->
+    <source-file src="src/ios/AudioBuffer.swift" />
+  </platform>
 
   <js-module src="audiobuffer.js" name="AudioBuffer">
     <clobbers target="AudioBuffer" />

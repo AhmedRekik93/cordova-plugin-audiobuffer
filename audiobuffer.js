@@ -47,7 +47,7 @@ var AudioBuffer = {
   },
 
   /**
-   * Returns whether the DBMeter is listening.
+   * Returns whether the AudioBuffer is listening.
    *
    * @param  {success} callback in case of success
    * @param  {error} callback in case of error
@@ -62,8 +62,8 @@ var AudioBuffer = {
 };
 
 AudioBuffer.ERROR_CODES = {
-  '0':'DBMETER_NOT_INITIALIZED',
-  '1':'DBMETER_NOT_LISTENING'
+  '0':'AudioBuffer_NOT_INITIALIZED',
+  '1':'AudioBuffer_NOT_LISTENING'
 };
 
 module.exports = AudioBuffer;

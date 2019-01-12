@@ -1,9 +1,9 @@
 import Foundation
 import AVFoundation
 
-@objc(DBMeter) class DBMeter : CDVPlugin {
+@objc(AudioBuffer) class AudioBuffer : CDVPlugin {
 
-    private let LOG_TAG = "DBMeter"
+    private let LOG_TAG = "AudioBuffer"
     private let REQ_CODE = 0
     private var isListening: Bool = false
     private var audioRecorder: AVAudioRecorder!
@@ -39,7 +39,7 @@ import AVFoundation
             let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
             self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
         } else {
-            self.sendPluginError(callbackId: command.callbackId, errorCode: PluginError.DBMETER_NOT_INITIALIZED, errorMessage: "DBMeter is not initialized")
+            self.sendPluginError(callbackId: command.callbackId, errorCode: PluginError.AudioBuffer_NOT_INITIALIZED, errorMessage: "AudioBuffer is not initialized")
         }
     }
 
@@ -77,7 +77,7 @@ import AVFoundation
                     self.audioRecorder = try AVAudioRecorder(url: url, settings: settings)
                     self.audioRecorder.isMeteringEnabled = true
                 } catch {
-                    self.sendPluginError(callbackId: command.callbackId, errorCode: PluginError.DBMETER_NOT_INITIALIZED, errorMessage: "Error while initializing DBMeter")
+                    self.sendPluginError(callbackId: command.callbackId, errorCode: PluginError.AudioBuffer_NOT_INITIALIZED, errorMessage: "Error while initializing AudioBuffer")
                 }
             }
             if (!self.isListening) {
@@ -108,13 +108,13 @@ import AVFoundation
                 let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
                 self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
             } else {
-                self.sendPluginError(callbackId: command.callbackId, errorCode: PluginError.DBMETER_NOT_LISTENING, errorMessage: "DBMeter is not listening")
+                self.sendPluginError(callbackId: command.callbackId, errorCode: PluginError.AudioBuffer_NOT_LISTENING, errorMessage: "AudioBuffer is not listening")
             }
         })
     }
 
     /**
-     Returns whether the DBMeter is listening.
+     Returns whether the AudioBuffer is listening.
      */
     @objc(isListening:)
     func isListening(command: CDVInvokedUrlCommand?) -> Bool {
@@ -149,7 +149,7 @@ import AVFoundation
     }
 
     enum PluginError: String {
-        case DBMETER_NOT_INITIALIZED = "0"
-        case DBMETER_NOT_LISTENING = "1"
+        case AudioBuffer_NOT_INITIALIZED = "0"
+        case AudioBuffer_NOT_LISTENING = "1"
     }
 }
