@@ -126,7 +126,7 @@ public class AudioBuffer extends CordovaPlugin {
                             LOG.d(LOG_TAG, Double.toString(db));
 
                             // PluginResult result = new PluginResult(PluginResult.Status.OK, (float) db);
-                            PluginResult result = new PluginResult(PluginResult.Status.OK, Arrays.toString(this.buffer));
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, Arrays.toString(that.buffer));
                             result.setKeepCallback(true);
                             callbackContext.sendPluginResult(result);
                         }
