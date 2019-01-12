@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Arrays;
 
 /**
  * This plugin provides the decibel level from the microphone.
@@ -125,7 +126,7 @@ public class AudioBuffer extends CordovaPlugin {
                             LOG.d(LOG_TAG, Double.toString(db));
 
                             // PluginResult result = new PluginResult(PluginResult.Status.OK, (float) db);
-                            PluginResult result = new PluginResult(PluginResult.Status.OK, (short[]) this.buffer);
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, Arrays.toString(this.buffer));
                             result.setKeepCallback(true);
                             callbackContext.sendPluginResult(result);
                         }
