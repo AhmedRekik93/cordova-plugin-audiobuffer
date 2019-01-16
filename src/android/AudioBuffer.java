@@ -112,6 +112,7 @@ public class AudioBuffer extends CordovaPlugin {
                         public void run() {
                             int readSize = that.audioRecord.read(that.buffer, 0, that.buffer.length);
                             double db = 0;
+/*
                             double maxAmplitude = 0;
                             for (int i = 0; i < readSize; i++) {
                                 if (Math.abs(that.buffer[i]) > maxAmplitude) {
@@ -124,6 +125,7 @@ public class AudioBuffer extends CordovaPlugin {
                             }
 
                             LOG.d(LOG_TAG, Double.toString(db));
+*/
 
                             // PluginResult result = new PluginResult(PluginResult.Status.OK, (float) db);
                             PluginResult result = new PluginResult(PluginResult.Status.OK, Arrays.toString(that.buffer));
@@ -131,7 +133,7 @@ public class AudioBuffer extends CordovaPlugin {
                             callbackContext.sendPluginResult(result);
                         }
                     };
-                    that.timer.scheduleAtFixedRate(timerTask, 0, 100);
+                    that.timer.scheduleAtFixedRate(timerTask, 0, 250);
                 }
             }
         });
