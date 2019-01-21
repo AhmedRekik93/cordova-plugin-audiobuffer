@@ -21,7 +21,7 @@ import java.util.TimerTask;
 import java.util.Arrays;
 
 /**
- * This plugin provides the decibel level from the microphone.
+ * This plugin provides the audio buffer in real-time from the microphone.
  */
 public class AudioBuffer extends CordovaPlugin {
 
@@ -35,7 +35,6 @@ public class AudioBuffer extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        //LOG.setLogLevel(LOG.DEBUG);
 
         if (!PermissionHelper.hasPermission(this, Manifest.permission.RECORD_AUDIO)) {
             PermissionHelper.requestPermission(this, REQ_CODE, Manifest.permission.RECORD_AUDIO);
@@ -77,7 +76,7 @@ public class AudioBuffer extends CordovaPlugin {
     }
 
     /**
-     * Starts listening the audio signal and sends dB values as a
+     * Starts listening the audio signal and sends audio buffer values as an array of shorts
      * {@link org.apache.cordova.PluginResult PluginResult} using a
      * {@link java.util.TimerTask TimerTask}.
      *
@@ -111,23 +110,6 @@ public class AudioBuffer extends CordovaPlugin {
                     TimerTask timerTask = new TimerTask() {
                         public void run() {
                             int readSize = that.audioRecord.read(that.buffer, 0, that.buffer.length);
-                            double db = 0;
-/*
-                            double maxAmplitude = 0;
-                            for (int i = 0; i < readSize; i++) {
-                                if (Math.abs(that.buffer[i]) > maxAmplitude) {
-                                    maxAmplitude = Math.abs(that.buffer[i]);
-                                }
-                            }
-
-                            if (maxAmplitude != 0) {
-                                db = 20.0 * Math.log10(maxAmplitude / 32767.0) + 90;
-                            }
-
-                            LOG.d(LOG_TAG, Double.toString(db));
-*/
-
-                            // PluginResult result = new PluginResult(PluginResult.Status.OK, (float) db);
                             PluginResult result = new PluginResult(PluginResult.Status.OK, Arrays.toString(that.buffer));
                             result.setKeepCallback(true);
                             callbackContext.sendPluginResult(result);
