@@ -99,7 +99,7 @@ public class AudioBuffer extends CordovaPlugin {
                             AudioFormat.ENCODING_PCM_16BIT,
                             bufferSize);
 
-                    that.buffer = new short[buffethatrSize];
+                    that.buffer = new short[bufferSize];
                 }
                 if (!that.isListening) {
                     that.isListening = true;
