@@ -85,7 +85,6 @@ public class AudioBuffer extends CordovaPlugin {
      */
     public void start(final CallbackContext callbackContext) {
         final AudioBuffer that = this;
-        this.clock = Clock.systemUTC();
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 if (that.audioRecord == null) {
@@ -100,19 +99,19 @@ public class AudioBuffer extends CordovaPlugin {
                             AudioFormat.ENCODING_PCM_16BIT,
                             bufferSize);
 
-                    that.buffer = new short[bufferSize];
+                    that.buffer = new short[buffethatrSize];
                 }
                 if (!that.isListening) {
                     that.isListening = true;
                     that.audioRecord.startRecording();
 
                     that.timer = new Timer(LOG_TAG, true);
-
+                    that.clock = Clock.systemUTC();
                     //start calling run in a timertask
                     TimerTask timerTask = new TimerTask() {
                         public void run() {
                             int readSize = that.audioRecord.read(that.buffer, 0, that.buffer.length);
-                            String toSend = "{ \"data\": " + Arrays.toString(that.buffer) + ", \"time\": " + this.clock.instant() + " }";
+                            String toSend = "{ \"data\": " + Arrays.toString(that.buffer) + ", \"time\": " + that.clock.instant() + " }";
                             PluginResult result = new PluginResult(PluginResult.Status.OK, toSend );
                             result.setKeepCallback(true);
                             callbackContext.sendPluginResult(result);
