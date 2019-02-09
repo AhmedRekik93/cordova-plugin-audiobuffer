@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Arrays;
+import java.time.Clock;
 
 /**
  * This plugin provides the audio buffer in real-time from the microphone.
@@ -31,7 +32,7 @@ public class AudioBuffer extends CordovaPlugin {
     private short[] buffer;
     private Timer timer;
     private boolean isListening = false;
-
+    private Clock clock;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -84,6 +85,7 @@ public class AudioBuffer extends CordovaPlugin {
      */
     public void start(final CallbackContext callbackContext) {
         final AudioBuffer that = this;
+        this.clock = Clock.systemUTC();
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 if (that.audioRecord == null) {
@@ -110,7 +112,8 @@ public class AudioBuffer extends CordovaPlugin {
                     TimerTask timerTask = new TimerTask() {
                         public void run() {
                             int readSize = that.audioRecord.read(that.buffer, 0, that.buffer.length);
-                            PluginResult result = new PluginResult(PluginResult.Status.OK, Arrays.toString(that.buffer));
+                            String toSend = "{ \"data\": " + Arrays.toString(that.buffer) + ", \"time\": " + this.clock.instant() + " }";
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, );
                             result.setKeepCallback(true);
                             callbackContext.sendPluginResult(result);
                         }
