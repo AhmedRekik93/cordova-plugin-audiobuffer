@@ -20,6 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Arrays;
 import java.time.Clock;
+import java.lang.System;
 
 /**
  * This plugin provides the audio buffer in real-time from the microphone.
@@ -105,10 +106,11 @@ public class AudioBuffer extends CordovaPlugin {
                     that.audioRecord.startRecording();
 
                     that.timer = new Timer(LOG_TAG, true);
-                    Clock clock = Clock.systemUTC();
+                    //Clock clock = Clock.systemUTC();
                     //start calling run in a timertask
                     TimerTask timerTask = new TimerTask() {
                         public void run() {
+                            int s = System.currentTimeMillis();
                             int readSize = that.audioRecord.read(that.buffer, 0, that.buffer.length);
                             String toSend = "{ \"data\": " + Arrays.toString(that.buffer) + " }";
                             PluginResult result = new PluginResult(PluginResult.Status.OK, toSend );
