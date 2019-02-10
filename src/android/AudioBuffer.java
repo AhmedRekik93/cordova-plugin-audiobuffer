@@ -32,7 +32,7 @@ public class AudioBuffer extends CordovaPlugin {
     private short[] buffer;
     private Timer timer;
     private boolean isListening = false;
-    // private Clock clock;
+    private Clock clock;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -106,7 +106,7 @@ public class AudioBuffer extends CordovaPlugin {
                     that.audioRecord.startRecording();
 
                     that.timer = new Timer(LOG_TAG, true);
-                    // that.clock = Clock.systemUTC();
+                    that.clock = Clock.systemUTC();
                     //start calling run in a timertask
                     TimerTask timerTask = new TimerTask() {
                         public void run() {
