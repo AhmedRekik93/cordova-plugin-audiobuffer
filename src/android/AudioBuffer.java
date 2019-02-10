@@ -112,7 +112,7 @@ public class AudioBuffer extends CordovaPlugin {
                         public void run() {
                             long ms = System.currentTimeMillis();
                             int readSize = that.audioRecord.read(that.buffer, 0, that.buffer.length);
-                            String toSend = "{ \"data\": " + Arrays.toString(that.buffer) + " \"timestamp\": "+ ms + " }";
+                            String toSend = "{ \"data\": " + Arrays.toString(that.buffer) + ", \"timestamp\": "+ ms + " }";
                             PluginResult result = new PluginResult(PluginResult.Status.OK, toSend );
                             result.setKeepCallback(true);
                             callbackContext.sendPluginResult(result);
