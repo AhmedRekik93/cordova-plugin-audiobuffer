@@ -110,9 +110,12 @@ public class AudioBuffer extends CordovaPlugin {
                     //start calling run in a timertask
                     TimerTask timerTask = new TimerTask() {
                         public void run() {
-                            long ms = System.currentTimeMillis();
+                            long ms1 = System.currentTimeMillis();
                             int readSize = that.audioRecord.read(that.buffer, 0, that.buffer.length);
-                            String toSend = "{ \"data\": " + Arrays.toString(that.buffer) + ", \"timestamp\": "+ ms + " }";
+                            long toString = Arrays.toString(that.buffer);
+                            long ms2 = System.currentTimeMillis();
+                            long ms = (ms1 + ms2)/2;
+                            String toSend = "{ \"data\": " + toString + ", \"timestamp\": "+ ms + " }";
                             PluginResult result = new PluginResult(PluginResult.Status.OK, toSend );
                             result.setKeepCallback(true);
                             callbackContext.sendPluginResult(result);
